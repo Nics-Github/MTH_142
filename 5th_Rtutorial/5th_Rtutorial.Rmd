@@ -1,0 +1,143 @@
+---
+title: "Tutorial 5"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction 
+
+In this tutorial you will make a histogram, a boxplot, and run `favstats()` broken up by variable levels. Post questions in the forums. Your assignment is on the last page. 
+
+
+## Make a histogram
+
+We make a histogram back in 2nd Rtutorial, remember to use gf_histogram() our variable must be numeric. 
+
+1. For this document tutorial we’ll use the `run17` dataframe from openintro. Read about it here. Load the library in the chunk below.
+
+```{r library, exercise = TRUE}
+
+```
+
+```{r library-hint}
+library(openintro)
+```
+
+2. Let's look at `run17` with the chunk below.
+
+```{r look, exercise = TRUE}
+
+```
+
+```{r look-hint}
+glimpse(run17)
+```
+
+Lets make a histogram of `net_sec`
+
+```{r net-sec-hist, exercise= TRUE}
+gf_histogram(~,data=)
+```
+
+```{r net-sec-hist-hint}
+gf_histogram(~net_sec,data=run17)
+```
+
+Notice the two humps in the graph. Those are for the different races. Let's facet these two races to examine them better. 
+
+```{r net-sec-hist-facet,exercise=TRUE}
+gf_histogram(~net_sec|event,data=run17)
+```
+
+We can further break this data apart by sex to see how the times were different for `F` and `M`. Let's add `fill=~sex` as an argument.  `sex` is a variable so it needs the \~ .
+
+```{r net-sec-hist-sex,exercise=TRUE}
+gf_histogram(~net_sec|event,data=run17,fill=~sex)
+
+```
+
+Now it looks like many more females ran the race than males. This is not necessarily true. The default position of the bins in a histogram is "stack"-ed, but we can change it to dodge for a better comparison. 
+
+Using the chunk below type `position="dodge"` as an argument. Notice that the y-axis get much shorter. 
+
+Now change position = "identity" and alter the transparency with `alpha=0.3` and change the outline to "black" with the color argument. Try it in the chunk below. 
+
+```{r net-sec-hist-identity,exercise=TRUE}
+gf_histogram(~net_sec|event,data=run17,fill=~sex,position="")
+
+gf_histogram(~net_sec|event,data=run17,fill=~sex,position="",alpha=,color="")
+```
+
+```{r net-sec-hist-identity-hint}
+gf_histogram(~net_sec|event,data=run17,fill=~sex,position="dodge")
+
+gf_histogram(~net_sec|event,data=run17,fill=~sex,position="identity",alpha=0.3,color="black")
+```
+
+```{r quiz}
+quiz(
+  question("The peak of the male histogram is shifted slightly to the left in the 10 mile run. What does this mean?",
+    answer("There were more women in the race"),
+    answer("The men ran faster in the 10 mile run", correct=TRUE),
+    answer("It means nothing"),
+    answer("codetools")
+  ),
+  question("The 10 mile race is much more popular than the 5k",
+    answer("True", correct = TRUE),
+    answer("False"),
+    answer("Impossible to tell")
+  ),
+   question("The skew in 5 k race...",
+    answer("is toward the right tail", correct = TRUE),
+    answer("means the mean is less than the median", correct= TRUE),
+    answer("means there may be some slower runner which would be outliers", correct= TRUE)
+  )
+
+)
+```
+
+
+## Boxplot
+
+We will quickly make a boxplot of the same data. Below is the last chunk from the previous topic. Change histogram to boxplot. Both boxplot and histograms take a single numeric variable, so we can quickly switch between the two. 
+
+```{r net-sec-boxplot,exercise=TRUE}
+gf_histogram(~net_sec|event,data=run17,fill=~sex,position="dodge")
+
+gf_histogram(~net_sec|event,data=run17,fill=~sex,position="identity",alpha=0.3,color="black")
+```
+
+I think the position= "dodge" is more helpful here. Infact it is the default position for a boxplot so we do not need to add it at all.
+
+## favstats()
+
+Take the code above and change `gf_boxplot` to favstats. You'll have to delete the position and alpha and color because favstats is not a graph. Also we want to change `event` to `sex`. 
+
+```{r net-sec-favstats,exercise=TRUE}
+gf_boxplot(~net_sec|event,data=run17,fill=~sex,position="dodge")
+
+```
+
+```{r net-sec-favstats-hint}
+favstats(~net_sec|sex,data=run17)
+
+```
+
+## Assignment
+
+	Part 1. 5 points
+ 
+You are to create a html file from an Rmarkdown file.
+
+-   You will use the `run12` data from the openintro library. In words describe the data. (use ?run12)
+-   Create a histogram with one variable of your choosing from above (note that you need a numeric variable for this).Your histogram must be broken up by the levels of `gender`. You do not need to facet this histogram. 
+-   Also make a boxplot of the data broken up by `gender`. 
+-   Run favstats() also split up by `gender`.
+-   Do an three sentence analysis using the statistics language we’ve been learning over the last three chapters.
+-   Output your Rmarkdown file as an html document and post it to the forum.

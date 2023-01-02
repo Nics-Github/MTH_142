@@ -1,0 +1,94 @@
+---
+title: "Tutorial 4"
+author: "Prof Schwab"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+You will need to put data into R in order to do computations with it. This tutorial will help you do that, in order to complete your homework. Nothing is due for this tutorial, but we'll save our work in an .Rmd file so I can show some common issues that occur.
+
+## Upload a spreadsheet file
+
+*This method is better for larger sets of data.*
+
+1.  Find some data. I'm choosing the data from HW 2 part 1 number 7.
+
+2.  Copy and paste it into a spreadsheet application.
+
+3.  Make the data into one column. Add a variable name, instead of spaces use underscores or hyphens.
+
+4.  Name and save the file to your computer. I'll call it `HW2_part1_number_7`
+
+5.  In the `Files` pane upload that file to Rstudio (see cheat sheet).
+
+6.  Open a new .Rmd file and click on the file `HW2_part1_number_7` to import it into R.
+
+7.  Copy the code that is generated and put it into the setup chunk of a .Rmd (If you are working in the console, you can skip this part. But you'll need to do this for future projects).
+
+8.  You can now do statistics on this data.
+
+## Make a vector
+
+*This method is better for smaller sets of data.*
+
+In the video I'll put this in a separate chunk in my .Rmd file, but if you'd rather you can just work in the console.
+
+1.  Find some data. I'm choosing the data from HW 2 part 1 number 7.
+
+2.  Come up with a name for your data. I'll call mine `HW2_part_1_problem_7_tedious`. Type: `HW2_part_1_problem_7_tedious <- c(` but don't hit enter yet. The `c()` is how R makes vectors, it is short for concatenate. The \<- is telling R to save the vector with a specific name.
+
+3.  Copy your data and paste it into R after the parenthesis.
+
+4.  Now to clean up the data, we have to add commas directly after each number. Don't put a comma after the last number and instead put a parenthesis. This is tedious and causes a surprising number of head aches for large data sets.
+
+5.  Now you can type the code below to answer the question. You don't have to reference the data, because `HW2_part_1_problem_7_tedious` is a vector and not a dataframe.
+
+`favstats(~HW2_part_1_problem_7_tedious)`
+
+`IQR(~HW2_part_1_problem_7_tedious)`
+
+## Common Errors
+
+### Error: data must be an environment or data.frame.
+
+This error happens when we save data as a vector then try to use the normal `~variable,data=___` format that is reserved for dataframes.
+
+    favstats(~HW_2_part1, data= HW_2_part1)
+    Error: data must be an environment or data.frame.
+
+Solution: remove the \~ or `data=WW2_part_1_problem_7_tedious`
+
+### Error: in favstats(...) could not find function "favstats"
+
+This happens when we use a function from a library, but forget to load the library.
+
+Solution: Add the appropriate library to the .Rmd set up chunk. (In this case add `library(mosaic))`. If you are working the console type `library(mosaic)` into the console and hit enter.
+
+### Error: in eval(x, data, env) : object 'sample_data' not found
+
+This has three common causes.
+
+1.  The variable is misspelled, or has incorrect capitalization.
+
+2.  You forgot the `data =` argument to tell R where the variable is or your data reference is misspelled.
+
+3.  If this happens only when you knit the document, it usually means that you did not copy and past the import code into the set up chunk.
+
+Solution for case 3: Import your data again and copy and paste the code that pops up in the console into the setup chunk. I'll look like the code below with different words in the `/`.
+
+`library(readxl)`
+
+`HW_2_1 <- read_excel("~/file/name/document.xlsx")`
+
+### Warning: Auto-converting formula to numeric.Error in fav_stats(~sample_data, HW_2_1) : 'language' object cannot be coerced to type 'double'
+
+This happens when we use the older `fav_stats()` and not `favstats()`. 
+
+Solution: Never use `fav_stats()`, only use `favstats()`.
