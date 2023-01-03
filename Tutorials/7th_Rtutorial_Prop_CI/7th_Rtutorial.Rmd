@@ -7,6 +7,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(mosaic)
+library(openintro)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -21,6 +22,10 @@ In this tutorial I will show you how to calculate confidence intervals from a bi
 *A store randomly samples 603 shoppers over the course of a year and finds that 142 of them made their visit because of a coupon they'd received in the mail. Construct a 95% confidence interval for the fraction of all shoppers during the year whose visit was because of a coupon they'd received in the mail.*
 
 2.  Load `library(mosaic)`. Open the MTH 142 cheat sheet and find `prop.test()`. Type `?prop.test()` to see the arguemnts required.
+
+```{r libraries, exercise=TRUE, exercise.eval=FALSE}
+
+```
 
 3.  To make a confidence interval type `prop.test(x=142,n=603, conf.level=0.95, correct= "FALSE")`
 
