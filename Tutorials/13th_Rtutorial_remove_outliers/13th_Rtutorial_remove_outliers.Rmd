@@ -1,0 +1,99 @@
+---
+title: "Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(mosaic)
+library(openintro)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction
+
+In this optional tutorial we'll use the `filter()` function from the `tidyverse` library. We will use it to remove outliers from a set of data. There is no assignment for this tutorial, but completing it will allow you to earn 1 point extra credit on the project.
+
+## Setup
+
+1. The `mosaic`, `openintro` and `tidtverse` libraries have been loaded. 
+
+2. View the nyc_marathon dataset the view(nyc_marathon).
+
+3. Let's take a look at the `Men` and `Women` time averages separately. They are “levels” of the `division` variable. Use `gf_boxplot()` to plot them and check for outliers. 
+
+```{r nyc-marathon-boxplot,exercise=TRUE}
+
+```
+
+```{r nyc-marathon-boxplot-hint}
+gf_boxplot(time_hrs~division,data=nyc_marathon)
+```
+
+You should see boxplots for men and women winners of `nyc_marathon` runners. Not the many outliers showing slower runners.
+
+## Finding the bounds for the fences
+
+We can calculate the upper and lower limit for outliers by hand or go through the steps with R as in the chunk below:
+
+```{r outlier, exercise = TRUE}
+#This saves the favstats output
+saved_stats <- favstats(time_hrs~division,data=nyc_marathon) 
+
+#This calculates the IQRs for each group. na.rm removes cells without data.
+saved_stats_iqr <- iqr(time_hrs~division,data=nyc_marathon,na.rm=TRUE) 	
+
+#This is the upper cutoff for outliers
+upper <- saved_stats$Q3 + 1.5*saved_stats_iqr 			
+
+#This is the lower cutoff for outliers
+lower <- saved_stats$Q1 - 1.5*saved_stats_iqr 			#
+
+#This shows us the upper and lower cutoffs for outliers
+upper 
+lower
+```
+
+## Filter out the outliers
+
+Once we know the upper limits we can remove the outliers with the `filter()` function. We don't need to filter by the lower limit because there are not lower outliers. The `filter()` function takes the data frame we want to filter and the constraints we want to filter by, see code below. 
+
+```{r filtering, exercise=TRUE}
+nyc_marathon_no_outs <- 
+  filter(nyc_marathon, 
+         time_hrs < 2.575694 & division =='Women' | 
+           time_hrs < 2.258437 & division =='Men'
+         )
+
+nyc_marathon_no_outs
+```
+## Veryfiy that outliers have been removed
+
+The data is being saved as `nyc_marathon_no_outs`. Make a new boxplot with this data below to verify that the outlier have been removed. 
+
+```{r removed-setup}
+nyc_marathon_no_outs <- 
+  filter(nyc_marathon, 
+         time_hrs < 2.575694 & division =='Women' | 
+           time_hrs < 2.258437 & division =='Men'
+         )
+
+```
+
+```{r removed, exercise=TRUE}
+
+```
+
+
+
+```{r removed-hint}
+gf_boxplot(time_hrs~division,data=nyc_marathon_no_outs,coef=1.5)
+```
+
+It looks like there is still an outlier in the Men's division. But there is not! We removed the outliers from `nyc_marathon` but we changed the dataset with `filter()`. When we did this R forgot about the original data `nyc_marathon` and is calculating outliers in the new `nyc_marathon_no_outs` data. We have to understand all the outliers from the original dataset have been removed, we should not remove more. To cover up this fake outlier we can change the `coef` argument to 2. 
+
+## No Assignment Due
+

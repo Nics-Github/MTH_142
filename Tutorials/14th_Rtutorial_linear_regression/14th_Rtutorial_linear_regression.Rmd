@@ -1,0 +1,122 @@
+---
+title: "Tutorial 14"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(mosaic)
+library(openintro)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+In this R Tutorial we'll walk through the process of making a linear regression model in R
+
+## Organize Data
+
+1.  The `mosaic` and `openintro` libraries have been preloaded.
+
+2.  I'll be working from question 1 in homework 8 part 2. Here's the text from that assignment:
+
+*The data below was collected from manufacturer advertisements of their vehicles horsepower and highway gas mileage (mpg.). Use this data to answer the following questions.*
+
+The data from my version of the problem is below*, rename the vectors `x` and `y` as `horsepower` and `mpg`. 
+
+```{r data-input,exercise=TRUE}
+x <- c(158, 250, 340, 350, 390, 190, 220)
+y <- c(33, 28, 15, 17, 11, 35, 42)
+
+```
+
+```{r data-input-hint}
+hp <- c(158, 250, 340, 350, 390, 190, 220)
+mpg <- c(33, 28, 15, 17, 11, 35, 42)
+
+```
+
+\* We could have imported the data as a table but this felt faster. See tutorial 4 for information on that. 
+
+## Make a scatter plot and linear regression
+
+1. In the chunk below make a scatter plot using `gf_point()` of `mpg` vs `hp`. 
+
+```{r prepare-scatter}
+hp <- c(158, 250, 340, 350, 390, 190, 220)
+mpg <- c(33, 28, 15, 17, 11, 35, 42)
+```
+
+```{r scatter-plot, exercise=TRUE, exercise.setup="prepare-scatter"}
+#Note you don't need a data argument because we're dealing with two vectors, not a data frame. 
+gf_point(____~____)
+
+```
+
+```{r scatter-plot-hint}
+gf_point(hp~mpg)
+
+```
+
+2. We can add a regression line by piping `gf_point()` to `gf_lm()` with `%>%` .
+
+
+
+```{r line-plot, exercise=TRUE, exercise.setup="prepare-scatter"}
+#Note you don't need a data argument because we're dealing with two vectors, not a data frame. 
+gf_point(____~____) %>%
+  gf_lm(____~____)
+
+```
+
+```{r line-plot-hint}
+gf_point(hp~mpg) %>%
+  gf_lm(hp~mpg)
+
+```
+
+You should add better axes labels and a good title. IN case you forget you can add this with the arguments `title= "title" `, `xlab= ""`,`ylab= ""` to the argument of `gf_point()`.
+
+## Find the correlation coefficient and equation. 
+
+1. We can use the `lm()` to find the linear model that fits our data.  
+
+```{r lm, exercise=TRUE}
+hp_mpg_model <- lm(hp~mpg)
+hp_mpg_model
+```
+
+2. From the output of the model we can see that the equation is
+
+$y=-6.896 x + 449.448$ 
+
+where x is mpg and y is hp. 
+
+3. We can also use `msummary(hp_mpg_model)` to see the p-value for a hypothesis and the $r^2$ value. To see the correlation coefficient take the square root of r^2 or use `cor()`. Also note we can see the intercept and mpg values that we used to write the linear equation. 
+
+```{r summary-setup}
+hp_mpg_model <- lm(hp~mpg)
+hp_mpg_model
+```
+
+```{r summary, exercise=TRUE}
+msummary()
+sqrt()
+cor()
+```
+
+```{r summary-hint}
+msummary(hp_mpg_model)
+
+#When taking the square root of r^2 you have to consider the sign + or - of r.  
+sqrt(0.8171)
+
+cor(hp~mpg)
+```
+
+
+
+Step 7. Notice when I knitted I needed to bring the data into R I did this by adding the following to the setup chunk.
+
+library(readxl) Rtut_13 \<- read_excel("Rtut_13.xlsx")
