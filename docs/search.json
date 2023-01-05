@@ -1,0 +1,506 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "There are also 14 tutorials relevant to students studying statistics with R. The .Rmd files for those can be found on github.\nI use the mosaic , openintro, and tidyverse packages. Formula ~ syntax is used whenever possible.\nThe text is OpenIntro’s Introduction to Statistics. MyOpenMath is the LMS and has problems from the text. There is a template course on MyOpenMath that was put together by Adam Gilbert of Southern New Hampshire University. If you’d like to copy my template please contact me via the email link above."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MTH 142: Intro to Statistics",
+    "section": "",
+    "text": "Outlines\nHere are links to the text files you can copy as outlines for your tutorial assignments.\n\n\nMy Open Math\nThis link will take you back to My Open Math where you can find our course.\n\n\nThe cheat sheets\nThis link will take you to the course cheat sheets.\n\n\nAll the R you need\nThis link will show a text document of the All the R you need document by Annie McNamara"
+  },
+  {
+    "objectID": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html",
+    "href": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html",
+    "title": "Tutorial 8",
+    "section": "",
+    "text": "In this tutorial I will show you how to use the count() and tally() functions. We’ll use data from OpenIntro ."
+  },
+  {
+    "objectID": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html#tally-and-count",
+    "href": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html#tally-and-count",
+    "title": "Tutorial 8",
+    "section": "tally() and count()",
+    "text": "tally() and count()\n\nYou will need to load the mosaic library for the functions and openintro for the data.\n\n\n\nlibrary()\nlibrary()\n\n\n\n\nThe tally() function will count the number of responses for you. My variable is coal_mining from the pew_energy_2018 data list *. In the chunk below evaluate tally() by inputting the variable and data.\n\n\n\ntally()\n\n\n\n\n\ntally(~coal_mining, data=pew_energy_2018)\n\n\nYou can also use the count() function it does almost the same thing. Change tally to count in the chunk above.\n* For whatever reason the authors of the OpenIntro data did not make pew_energy_2018 into a dataframe, to make it one type:\npew_energy_dataframe <- as.data.frame(pew_energy_2018)\nYou’ll need to do this in the setup chunk of the project."
+  },
+  {
+    "objectID": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html#no-assignment",
+    "href": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html#no-assignment",
+    "title": "Tutorial 8",
+    "section": "No Assignment",
+    "text": "No Assignment\nYou don’t have to turn in anything special for this tutorial."
+  },
+  {
+    "objectID": "Tutorials/5th_Rtutorial/5th_Rtutorial.html",
+    "href": "Tutorials/5th_Rtutorial/5th_Rtutorial.html",
+    "title": "Tutorial 5",
+    "section": "",
+    "text": "In this tutorial you will make a histogram, a boxplot, and run favstats() broken up by variable levels. Post questions in the forums. Your assignment is on the last page."
+  },
+  {
+    "objectID": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#make-a-histogram",
+    "href": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#make-a-histogram",
+    "title": "Tutorial 5",
+    "section": "Make a histogram",
+    "text": "Make a histogram\nWe make a histogram back in 2nd Rtutorial, remember to use gf_histogram() our variable must be numeric.\n\nFor this document tutorial we’ll use the run17 dataframe from openintro. Read about it here. Load the library in the chunk below.\n\n\n\n\n\n\n\n\nlibrary(openintro)\n\n\n\nLet’s look at run17 with the chunk below.\n\n\n\n\n\n\n\n\nglimpse(run17)\n\n\nLets make a histogram of net_sec\n\n\ngf_histogram(~,data=)\n\n\n\n\n\ngf_histogram(~net_sec,data=run17)\n\n\nNotice the two humps in the graph. Those are for the different races. Let’s facet these two races to examine them better.\n\n\ngf_histogram(~net_sec|event,data=run17)\n\n\n\nWe can further break this data apart by sex to see how the times were different for F and M. Let’s add fill=~sex as an argument. sex is a variable so it needs the ~ .\n\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex)\n\n\n\nNow it looks like many more females ran the race than males. This is not necessarily true. The default position of the bins in a histogram is “stack”-ed, but we can change it to dodge for a better comparison.\nUsing the chunk below type position=\"dodge\" as an argument. Notice that the y-axis get much shorter.\nNow change position = “identity” and alter the transparency with alpha=0.3 and change the outline to “black” with the color argument. Try it in the chunk below.\n\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex,position=\"\")\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex,position=\"\",alpha=,color=\"\")\n\n\n\n\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex,position=\"dodge\")\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex,position=\"identity\",alpha=0.3,color=\"black\")\n\n\n\n\nQuiz"
+  },
+  {
+    "objectID": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#boxplot",
+    "href": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#boxplot",
+    "title": "Tutorial 5",
+    "section": "Boxplot",
+    "text": "Boxplot\nWe will quickly make a boxplot of the same data. Below is the last chunk from the previous topic. Change histogram to boxplot. Both boxplot and histograms take a single numeric variable, so we can quickly switch between the two.\n\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex,position=\"dodge\")\n\ngf_histogram(~net_sec|event,data=run17,fill=~sex,position=\"identity\",alpha=0.3,color=\"black\")\n\n\n\nI think the position= “dodge” is more helpful here. Infact it is the default position for a boxplot so we do not need to add it at all."
+  },
+  {
+    "objectID": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#favstats",
+    "href": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#favstats",
+    "title": "Tutorial 5",
+    "section": "favstats()",
+    "text": "favstats()\nTake the code above and change gf_boxplot to favstats. You’ll have to delete the position and alpha and color because favstats is not a graph. Also we want to change event to sex.\n\n\ngf_boxplot(~net_sec|event,data=run17,fill=~sex,position=\"dodge\")\n\n\n\n\n\nfavstats(~net_sec|sex,data=run17)"
+  },
+  {
+    "objectID": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#assignment",
+    "href": "Tutorials/5th_Rtutorial/5th_Rtutorial.html#assignment",
+    "title": "Tutorial 5",
+    "section": "Assignment",
+    "text": "Assignment\nPart 1. 5 points\nYou are to create a html file from an Rmarkdown file.\n\nYou will use the run12 data from the openintro library. In words describe the data. (use ?run12)\nCreate a histogram with one variable of your choosing from above (note that you need a numeric variable for this).Your histogram must be broken up by the levels of gender. You do not need to facet this histogram.\nAlso make a boxplot of the data broken up by gender.\nRun favstats() also split up by gender.\nDo an three sentence analysis using the statistics language we’ve been learning over the last three chapters.\nOutput your Rmarkdown file as an html document and post it to the forum."
+  },
+  {
+    "objectID": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html",
+    "href": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html",
+    "title": "Tutorial",
+    "section": "",
+    "text": "In this tutorial we will get familiar with a few of the functions necessary to complete hypothesis testing and confidence interval building with the Student’s t-distribution. For more information on the Student’s t-distribution please see the chapter 7 reading section. There is no assignment associated with this section but you’ll use these skills in your homework."
+  },
+  {
+    "objectID": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#hypothesis-test-setup",
+    "href": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#hypothesis-test-setup",
+    "title": "Tutorial",
+    "section": "Hypothesis test setup",
+    "text": "Hypothesis test setup\n\nI’ve preloaded the mosaic and openintro libraries. If you are working in a blank .Rmd file you’ll have to load those.\nUse the chunk below to look at the prius_mpg data frame, which is different than the data referenced in HW 7.\n\n\n\n\n\n\n\n\nView(prius_mpg)\n?prius_mpg\n\n\n\nWe can assume independence, because all the values are different, different owners driving different cars. We need to check normality. The sample size is less than 30, so we need to make sure there are no outliers. Make a boxplot of the average_mpg variable in the chunk below to verify.\n\n\n\ngf_boxplot()\n\n\n\n\n\ngf_boxplot(~average_mpg,data=prius_mpg)\n\n\n\nfueleconomy.gov says that the gas and electric engine of the prius will give a combined fuel economy of 133 MPGe. Let’s assume that to be the parameter for average MPGe and test whether it is actually greater with the sample provided from prius_mpg\n\n\\(H_0: \\mu = 133\\) \\(H_1: \\mu > 133\\)\n\\(\\alpha= 0.05\\)"
+  },
+  {
+    "objectID": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#execute-the-test",
+    "href": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#execute-the-test",
+    "title": "Tutorial",
+    "section": "Execute the test",
+    "text": "Execute the test\n\nThe arguments are nearly the same as the prop.test() hypothesis test from the 9th Rtutorial, except, since we are testing an average not a proportion we use mu=133 instead of p=133. Try to fill in the blanks below.\n\n\n\nt.test(~,mu=,data=, alternative=\"\")\n\n\n\n\n\nt.test(~average_mpg,mu=133,data=prius_mpg,alternative=\"greater\")\n\n\noptional: Just like with the prop.test() you can save the results and only call up the p-value. Try it in the chunk below.\n\n\nt.test_results<- t.test(~average_mpg,mu=133,data=prius_mpg,alternative=\"greater\")\nt.test_results\n\n\n\n\n\nt.test_results<- t.test(~average_mpg,mu=133,data=prius_mpg,alternative=\"greater\")\nt.test_results$p.value\n\n\n\nAt this point we can write our conclusion. The p-value = 0.23 which is greater than \\(\\alpha =0.05\\). We fail to reject the null hypothesis. It is likely that even if the true average MPGe is 133 we could collect a sample of 19 cars with a sample average of \\(\\bar{x}=144.9\\)."
+  },
+  {
+    "objectID": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#how-to-calculate-test-statistics-and-critical-values.",
+    "href": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#how-to-calculate-test-statistics-and-critical-values.",
+    "title": "Tutorial",
+    "section": "How to calculate test statistics and critical values.",
+    "text": "How to calculate test statistics and critical values.\nSome homework problems will want to you calculate the t-scores called the test statistic and the critical value. To do this we will use xqt() from the mosaic package. Which calculates the quantiles of a t-distribution.\n\nTest Statistic\n\nRemember the p-value is the probability that gives the t-score from the relevant t-distribution. xqt() takes the p-value and degrees of freedom for arguments and outputs the test statistic. Put the arguments into the code below. We want to add lower.tail = FALSE because we did a right tailed test.\n\n\n\nxqt(p= , df=, lower.tail = FALSE)\n\n\n\n\n\nxqt(p=0.2309915 , df=18, lower.tail=FALSE)\n\n\nNotice the test statistic is the same as the one that was output in our test in the last section, so R will find this for us when given a set of data. We only need it if given a p-value and asked for the test Statistic.\n\n\nCritical Value\nFinding the critical value is the same as finding the test statistic, except the critical value is based on whatever you chose for alpha. In the chunk below type the code we would use to find the critical value for this hypothesis test.\n\n\nxqt(p= , df=, lower.tail = FALSE)\n\n\n\n\n\nxqt(p=0.05 , df=18, lower.tail=FALSE)"
+  },
+  {
+    "objectID": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#finding-p-values-from-test-statistics.",
+    "href": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#finding-p-values-from-test-statistics.",
+    "title": "Tutorial",
+    "section": "Finding p-values from test statistics.",
+    "text": "Finding p-values from test statistics.\nIf you find a test statistic by hand or are given one, you will want to calculate its p-value. We’ll use xpt() from the mosaic package for this.\n\nRemember the test statistic gives the p-value in a particular distribution. xpt() takes the test statistic and df for arguments. Find the p-value for the test statistic from our problem.\n\n\n\nxpt(q=,df=)\n\n\n\n\n\n# The answer is not 0.769, set lower.tail=FALSE\nxpt(q=0.7516402,df=18,lower.tail=FALSE)"
+  },
+  {
+    "objectID": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#no-assignment-due",
+    "href": "Tutorials/10th_Rtutorial_t_test/10th_Rtutorial.html#no-assignment-due",
+    "title": "Tutorial",
+    "section": "No Assignment Due",
+    "text": "No Assignment Due"
+  },
+  {
+    "objectID": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html",
+    "href": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html",
+    "title": "Tutorial 2",
+    "section": "",
+    "text": "This tutorial should be completed after the chapter 1 reading. Specifically you should have read about the different types of variables.\nWe are going to consider the loan50 data frame from chapter 1 in the text. More detail is given in the video called “First R tutorial.” Your assignment is on the last page."
+  },
+  {
+    "objectID": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#exploring-the-data",
+    "href": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#exploring-the-data",
+    "title": "Tutorial 2",
+    "section": "Exploring the Data",
+    "text": "Exploring the Data\n\nRead about the data. (Summary on page 12 in the text. More info on openintro.org ).\nLoad the following libraries and prevent scientific notation by copying and pasting the following into the chunk below:\n\nlibrary(openintro)\nlibrary(mosaic)\nlibrary(tidyverse)\noptions(scipen=10)\n\n\n\n\n\n\n\n\nWe want to look at the loan50 data. Below are three ways of doing this. Type and run each:\n\nloan50\nglimpse(loan50)\nhead(loan50)\n\n\n\n\n\n\n\n\nQuestions:\n\n\n\nQuiz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat do we want to learn about lending club borrowers from the tables of data?"
+  },
+  {
+    "objectID": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#graphing",
+    "href": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#graphing",
+    "title": "Tutorial 2",
+    "section": "Graphing",
+    "text": "Graphing\n\nCategorical\nTo start we’ll use gf_bar() to graph the categorical variable state. Fill in the add the variable and dataframe names then run the chunk below.\n\n\ngf_bar(~,data=)\n\n\n\n\n\ngf_bar(~state,data=loan50)\n\n\nIf you want to learn more about gf_bar() type ?gf_bar() in the chunk below.\n\n\n\n\n\n\n\nNumeric\nLet’s use gf_histogram() to graph emp_length from the loan50 dataframe.\n\n\n\n\n\n\n\ngf_histogram(~\"variable_name\",data=\"data frame name\")\n\n# remove the quotations and type the variable and data in their appropriate locations. \n\n\n\n\nGo back to the graphs above and add an x-axis label, a title and some color.\nSee your assignment below"
+  },
+  {
+    "objectID": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#assignment",
+    "href": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#assignment",
+    "title": "Tutorial 2",
+    "section": "Assignment",
+    "text": "Assignment\n\nPart 1. 4 points\nIn a new Rmarkdown file.\n\nChoose one categorical or numeric variable from loan50 and make a bar chart or histogram. You cannot use the state or emp_length variable.\nIf categorical: state whether the variable is (ordinal or nominal). If numeric: state wether it is discrete or continuous and why.3\nOutput the Rmarkdown file as html (be sure to see the 1st R tutorial for this).\nPost these in the the second Rtutorial forum.\n\n\n\nPart 2. 1 point\nFor this part of the assignment you are to post a reply to a classmate’s assignment.\nDo you agree or disagree that the variable is the correct type? Why?"
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html",
+    "title": "Tutorial",
+    "section": "",
+    "text": "In this Rtutorial we will use a famous dataset from one of the first modern statisticians, John Arbuthnot. We will also discuss how to make a proportion hypothesis test with a data set. This is the first of several types of hypothesis tests we will carry out in the second half of the semester."
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#randomly-choose-a-data-point",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#randomly-choose-a-data-point",
+    "title": "Tutorial",
+    "section": "Randomly choose a data point",
+    "text": "Randomly choose a data point\n\nIn the setup chunk of library(mosaic) and library(openintro). Read about the arbuthnot data frame in openintro with ?arbuthnot, feel free to read a bit about John Arbuthnot here.\n\n\n\n?arbuthnot\n\n\n\n\nType View(arbuthnot) in the chunk above.\nCompute the proportion of girls born in a random year of John Arbuthnot’s observations. Let’s randomly choose a year from the data to use as our hypothesis test with sample(nrow(arbuthnot),1) *\n\n\n\nsample(nrow(arbuthnot),1)\n\n\n\n\nNow you can take the random number and tell R you want to look only at that row in the dataset. I’ll choose the 1st year of the dataset by typing arbuthnot[1,]. Change the 1 to your random number in the chunk below. (Every time you knit or render your document the random number from the code above will change, so just type it out the first time and delete the code.)\n\n\n\n# A tibble: 1 × 3\n   year  boys girls\n  <int> <int> <int>\n1  1629  5218  4683\n\n\n\nCalculate the proportion of girls born in London in your year. You can do this with division. Mine would be\n\\(\\frac{4683}{5218+4683}=\\frac{4683}{9901}=0.4729\\)\nor 47%.\n\n* You will not need the sample() or nrow() functions after this assignment. If you are interested in what this code is doing here’s a quick description: nrow() counts the number of rows in the arbuthnot set. sample() randomly chooses a value between 0 and up to the number of rows in the arbuthnot set. The 1 is telling how many random numbers to generate."
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#set-up-the-hypothesis-test",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#set-up-the-hypothesis-test",
+    "title": "Tutorial",
+    "section": "Set up the hypothesis test",
+    "text": "Set up the hypothesis test\n\nSet up and conduct a hypothesis tests using prop.test(). Specifically you should check:\n\n\nThe success-failure condition (There are at least 10 success and 10 failures)\nIndependence\nThe data comes from a random sample.\n\n\nSet up the hypothesis test notation. Put $ $ around the text below, be sure to type it in the white space not a code chunk.\n\nH_0: p = 0.5\nH_1: p \\ne 0.5\n\nChoose a cut-off value \\(\\alpha\\) . In most of the homework problems 0.05 is appropriate. Show your alpha by putting $ $ around the text below.\n= 0.05"
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#execute-the-test",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#execute-the-test",
+    "title": "Tutorial",
+    "section": "Execute the test",
+    "text": "Execute the test\nNow we’ll have R generate the output of the test with prop.test(). This is very similar to making a confidence interval except we have two new arguments:\n\nwhat we think the null proportion is, p=0.5\nwhat the alternative hypothesis is, alternative = \"two.sided\".\n\nA success is a girl born. 4683 girls were born out of 9901 births in 1629 so my set up is:\n\n\nprop.test(x=4683,n=9901,p=0.5,alternative =\"two.sided\", correct=\"False\")\n\n\n\nNote: The p-value is 7.587e-08. This is scientific notation for 0.00000007587. You can tell R not to use scientific notation by adding options(scipen=10) to your setup chunk. Put it in the code chunk above and rerun the test to see the difference.\nOptional: There is a lot of extra text in the output. If we want to clean it up we can first save the results of the prop.test() then call just the p-value. See the chunk below:\n\n\nprop_test_results <- prop.test(x=4683,n=9901,p=0.5,alternative =\"two.sided\", correct=\"False\")\nprop_test_results$p.value\n\n\n\nThe dollar sign operator $ takes out a named element from a list. For example if you type: arbuthnot$year every year that data was collected will be displayed. Using the code above only your p.value will be displayed which just looks better."
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#conclusion",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#conclusion",
+    "title": "Tutorial",
+    "section": "Conclusion",
+    "text": "Conclusion\nWe now have to compare \\(\\alpha\\) and the p-value. We choose \\(\\alpha\\) to say any probability less than is unlikely if the null hypothesis is true. My p-value of 0.000000076 is much less than the alpha of 0.05. So I believe, based on this one randomly chosen value, that it is unlikely that the proportion of girls born in any year in 17th century London is 0.5 and I believe the number to be different.\nIt is possible that a type 1 error has occurred and I’ve rejected the null hypothesis even though it is true. But without further sampling it is impossible for me to know if that is the case."
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#a-few-notes-on-our-test.",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#a-few-notes-on-our-test.",
+    "title": "Tutorial",
+    "section": "A few notes on our test.",
+    "text": "A few notes on our test.\nConfusingly there are many different methods for computing p-values, all of which can be done in R. The method we will use in this class is prop.test(x,n,p=,correct=FALSE). See the cheat sheet. You will use this in your assignment for this tutorial (and for your homework chapter 6).\nAlso we usually wouldn’t have the data from multiple years, we might just have data from one sample and try to estimate p from that. Most people will find that more boys than girls are born. This is hypothesized to happen because boys are more likely to die before reproductive age. Eventually the proportions of males to females settle closer to 50:50 as reproductive age gets closer. By chance some of you will find that the proportions are equal and you will not reject the null hypothesis."
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#the-three-ps",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#the-three-ps",
+    "title": "Tutorial",
+    "section": "The three p’s",
+    "text": "The three p’s\nThere are three p’s we need to keep separate:\n\np - This is the population parameter, it is the value we are constantly trying to estimate.\n\\(\\hat{p}\\) - This is the population statistic, it is the value we use as an estimate for p.\np-value - This is the probability that our population statistic is possible if the null hypothesis is correct.\n\nI feel bad about the all the p’s."
+  },
+  {
+    "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#assignment",
+    "href": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html#assignment",
+    "title": "Tutorial",
+    "section": "Assignment",
+    "text": "Assignment\nAssignment 5 pts.\nYou are to conduct a bare bones hypothesis test in R with data from a random year in the table.\n\nChoose a random year to use as your proportion.\nYou cannot use the first year (1629).\nOutput your test an html file from an R Markdown file. I have posted a skeleton Rmarkdown for you to use.\nPost the html output of your Rmarkdown file to the forum. See the video and my output for the format."
+  },
+  {
+    "objectID": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html",
+    "href": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html",
+    "title": "Tutorial 7",
+    "section": "",
+    "text": "In this tutorial I will show you how to calculate confidence intervals from a binomial distribution. We will do it twice. Once from a problem from HW 5 part 1 and again from the exclusive_relationship data set in the openintro library. We’ll be using a problem from the OpenIntro Textbook. Your assignment is on the last page."
+  },
+  {
+    "objectID": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html#c.i.-from-statistics",
+    "href": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html#c.i.-from-statistics",
+    "title": "Tutorial 7",
+    "section": "C.I. From Statistics",
+    "text": "C.I. From Statistics\n\nFind HW 5 part 1 number 5. Here’s the text of the problem:\n\nA store randomly samples 603 shoppers over the course of a year and finds that 142 of them made their visit because of a coupon they’d received in the mail. Construct a 95% confidence interval for the fraction of all shoppers during the year whose visit was because of a coupon they’d received in the mail.\n\nLoad library(mosaic). Open the MTH 142 cheat sheet and find prop.test(). Type ?prop.test() to see the arguemnts required.\n\n\n\n\n\n\n\nTo make a confidence interval type prop.test(x=142,n=603, conf.level=0.95, correct= \"FALSE\")\n\nTry it in the chunk below.\n\n\nprop.test()\n\n\n\nFind the values that correspond to the confidence interval."
+  },
+  {
+    "objectID": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html#c.i.-from-data",
+    "href": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html#c.i.-from-data",
+    "title": "Tutorial 7",
+    "section": "C.I. From Data",
+    "text": "C.I. From Data\nLet’s find a confidence interval from a data set.\n\nLoad library(openintro) in the chunk below and type ?exclusive_relationship to read about that data frame.\n\n\n\nlibrary()\n\n\n\n\nIt might make sense to take a look at the data itself, do that in the previous chunk.*\nI want to know the true proportion of students who have had 1 exclusive relationship (aka the parameter). Since the binomial distribution is based on successes, we have to tell R what represents a success. The variable that has the successes is num. Make a 90% C.I. for the number of students that have had one exclusive relationships by typing ~num==1. Try it below.\n\n\n\nprop.test(~num ==______,data=_______,conf.level=, correct= \"FALSE\")\n\n\n\n\n\nprop.test(~num == 1,data=exclusive_relationship,conf.level=0.90, correct= \"FALSE\")\n\n\n* If you want to use view() or head() to look at the data load the tidyverse. Otherwise just type exclusive_relationship"
+  },
+  {
+    "objectID": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html#assignment",
+    "href": "Tutorials/7th_Rtutorial_Prop_CI/7th_Rtutorial.html#assignment",
+    "title": "Tutorial 7",
+    "section": "Assignment",
+    "text": "Assignment\n5 points.\nIn an Rmarkdown file:\n\nVerify independence and the success-failure condition.\nUse the exclusive_relationship data frame to make a 90% confidence interval for a different number of relationships (Not 1, I just did that. 0 is also weird, don’t do that one).\nInterpret your confidence interval in a sentence.\nSuppose that someone told you the true proportion of students in the number of exclusive relationships that you chose is 15%. Would you agree based on your confidence interval. Why or why not?\n\nKnit your file as a pdf and submit it to the forums."
+  },
+  {
+    "objectID": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html",
+    "href": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html",
+    "title": "Tutorial 1",
+    "section": "",
+    "text": "We’ll be using Rstudio for statistical computation in this course. We will log onto the Rstudio server which lives on a computer at HCC. You can install R and Rstudio on your personal computer, if you’d like, but that is in another video."
+  },
+  {
+    "objectID": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#log-into-the-server",
+    "href": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#log-into-the-server",
+    "title": "Tutorial 1",
+    "section": "Log into the server",
+    "text": "Log into the server\n\nNavigate your browser to: http://hcc-rstudiosrv1.hcc.edu:8787/auth-sign-in\nUse your @hcc.edu email and password to log in. If you forgot your password the help desk phone number is:\n413.552.2075\n\n\nexample:\nusername: nschwab@hcc.edu\npassword: ********"
+  },
+  {
+    "objectID": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#tour-of-rstudio",
+    "href": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#tour-of-rstudio",
+    "title": "Tutorial 1",
+    "section": "Tour of Rstudio",
+    "text": "Tour of Rstudio\nTo help remember all of the things we need for this class, I’ve made a cheat sheet. Let’s reference it to do the following:\n\nMake your first .Rmd\nKeep yourself organized\nFocus on the name of the file’s spacing\nRenaming a file\nDownloading file from RStudio.\nUploading a file to Rstudio.\nCopying and pasting plain text.\nTaking a screen shot"
+  },
+  {
+    "objectID": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#console-vs.-rmarkdown",
+    "href": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#console-vs.-rmarkdown",
+    "title": "Tutorial 1",
+    "section": "Console vs. Rmarkdown",
+    "text": "Console vs. Rmarkdown\n\nScratch work can be done in the console\nProjects knit in markdown1"
+  },
+  {
+    "objectID": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#grey-chunk-vs-white-space",
+    "href": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#grey-chunk-vs-white-space",
+    "title": "Tutorial 1",
+    "section": "Grey Chunk vs white space",
+    "text": "Grey Chunk vs white space\n\nSpacing in chunk\nChunk titles\nExtra: Mosaic cheat sheets."
+  },
+  {
+    "objectID": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#assignment",
+    "href": "Tutorials/1st_Rtutorial_getting_started/tutorial_1.html#assignment",
+    "title": "Tutorial 1",
+    "section": "Assignment",
+    "text": "Assignment\n\nMake first knit .Rmd file.\nDelete all the default stuff below the YAML.\nAdd a chunk to add some numbers together.\nWrite a sentence about what you hope to learn or accomplish in this class.\nSave it as your_name_tut_1.Rmd\nKnit your markdown file as .html and post it to the 1st R tutorial forum."
+  },
+  {
+    "objectID": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html",
+    "href": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html",
+    "title": "Tutorial",
+    "section": "",
+    "text": "In this tutorial we’ll use data from a homework problem to do a difference of means t.test. We will do this two times: once from a homework problem and once from a data set. Your assignment is on the last page."
+  },
+  {
+    "objectID": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#diff-of-means-with-two-vectors-containing-data",
+    "href": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#diff-of-means-with-two-vectors-containing-data",
+    "title": "Tutorial",
+    "section": "Diff of means with two vectors containing data",
+    "text": "Diff of means with two vectors containing data\n\nImport data from a homework problem. I’ve done this in the background for this tutorial, if you need a refresher see Rtutorial 4. I’ve named the Data Problem_1_data. Here’s the text from that problem from the OpenIntro Text\n\n\n“Durable press” cotton fabrics are treated to improve their recovery from wrinkles after washing. “Wrinkle recovery angle” measures how well a fabric recovers from wrinkles. Higher is better. Here are data on the wrinkle recovery angle (in degrees) for a random sample of fabric specimens. Assume the populations are approximately normally distributed with unequal variances. A manufacturer believes that the mean wrinkle recovery angle for Hylite is better. A random sample of 25 Permafresh (group 1) and 20 Hylite (group 2) were measured. Test the claim using a 10% level of significance.\n\nFor Independence we have to assume that no piece was sampled more than once. The problem states the data is normal. We can proceed.\nThe Hypothesis notation and alpha are\n\n\\(H_0: \\mu_p = \\mu_h\\)\n\\(H_0: \\mu_p < \\mu_h\\)\n\\(\\alpha = 0.10\\)\n\nThe data was imported into R as a list so each treatment is a vector and we can call the vector with the $ operator. With the code below we are doing a difference of means test between Hylite and Permafresh. The null hypothesis is that the difference should be 0. Note that the alternative= “less” because the manufacture thinks that Hylite is better and I listed Hylite second in the t.test().\n\n\n\nt.test(x=Problem_1_data$Permafresh, y=Problem_1_data$Hylite,mu=0,alternative = \"less\")\n\n\n\nThe p-value is 0.0008659 which is much less than \\(\\alpha=0.10\\) so we reject the null in favor of the alternative."
+  },
+  {
+    "objectID": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#diff-of-means-with-tidy-data-frame",
+    "href": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#diff-of-means-with-tidy-data-frame",
+    "title": "Tutorial",
+    "section": "Diff of means with tidy data frame",
+    "text": "Diff of means with tidy data frame\nLet’s do this process again with a dataset\n\nTake a look at the nyc_marathon dataset.\n\n\n\n\n\n\n\n\nView(nyc_marathon)\n?nyc_marathon\n\n\n\n\nWe might want to see if there is a difference in the two average winning times for men’s and women’s category at the 5% signifigance level. Our notation would look like this:\n\n\\(H_0: \\mu_m = \\mu_h\\)\n\\(H_0: \\mu_p < \\mu_h\\)\n\\(\\alpha = 0.10\\)\n\nTake a look at the data again. Notice that Men and Women are in the same column in the variable division. These are called the levels of division. We used them in the 3rd_Rtutorial We’ll use them to run our test.\n\n\n\n\n    Welch Two Sample t-test\n\ndata:  time_hrs by division\nt = -10.679, df = 72.831, p-value < 2.2e-16\nalternative hypothesis: true difference in means between group Men and group Women is not equal to 0\n95 percent confidence interval:\n -0.3686127 -0.2526635\nsample estimates:\n  mean in group Men mean in group Women \n           2.196544            2.507183 \n\n\nThere’s scientific notation again, turn it off with options(scipen=10) or regonize that number rounds to 0.\nThe p-value is much less than alpha we reject the null and state that there is a difference."
+  },
+  {
+    "objectID": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#outliers",
+    "href": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#outliers",
+    "title": "Tutorial",
+    "section": "Outliers!",
+    "text": "Outliers!\nWe do not yet know how to remove outliers, but the data frame from our hypothesis test had some. Run gf_boxplot() to see them.\n\n\ngf_boxplot(time_hrs~division,data=nyc_marathon)\n\n\n\nWe should not have run this test, because our data wasn’t normal. We didn’t even verify independence…\nFor shame, now I don’t know if the results of my test mean anything."
+  },
+  {
+    "objectID": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#assignment",
+    "href": "Tutorials/11th_Rtutorial_diff_or_means/11th_Rtutorial_diff_or_means.html#assignment",
+    "title": "Tutorial",
+    "section": "Assignment",
+    "text": "Assignment\n5 points\nIn an Rmarkdown file:\nUse the satgpa dataset in the openintro package.\nSet up a hypothesis test to see if there is a difference between sexes on the numeric variable of your choosing.\nDon’t forget to discuss independence and normality. If you do find outliers choose another variable. The formatting is a bit different because the sex variable is numeric in this data frame. Use either of the below formats to make your boxplots\n\ngf_boxplot(~sat_v|sex,data=satgpa)\n\ngf_boxplot(sat_v~sex,group=~sex,data=satgpa)\n\nThere is an outline available if you want to use it."
+  },
+  {
+    "objectID": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html",
+    "href": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html",
+    "title": "Tutorial 3",
+    "section": "",
+    "text": "We are going to consider some fastfood data set from openintro.org. I’ll show how to use the mosaic package to calculate summary statistics and gf_boxplot to make box plots. Your assignment is on the last page.\n\nread about the data set. (see openintro.org)\nLoad the openintro library for the data and the mosaic library for the functions by typing them into the console.\n\n\n\n\n\n\n\n\nlibrary(openintro)\nlibrary(mosaic)"
+  },
+  {
+    "objectID": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html#sample-statistics",
+    "href": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html#sample-statistics",
+    "title": "Tutorial 3",
+    "section": "Sample Statistics",
+    "text": "Sample Statistics\n\nWe want to look at the fastfood data. We saw several ways to do this in the first R tutorial. Type one into the chunk below.\n\n\n\n\n\n\n\n\nglimpse(fastfood)\n\n\n\n\nQuiz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s find some sample statistics. favstats() from the mosaic library will spit out the normal summary statistics. You can see the all the statistics you need document for more functions we can use here.\n\n\n\nfavstats(~calories,data=fastfood)\n\n\n\n\nNotice the calories are all over the place from 20 to 2430, this is caused by the different types of foods from salads to burgers to fries. We should edit the formula to break the food into restaurants.\n\n\n\nfavstats(calories~restaurant,data=fastfood)\n\n\n\n\n\nQuiz"
+  },
+  {
+    "objectID": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html#boxplots",
+    "href": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html#boxplots",
+    "title": "Tutorial 3",
+    "section": "Boxplots",
+    "text": "Boxplots\nWe can view these five number summaries as boxplots. Copy the chunk from above and change favstats() to gf_boxplot().\n\n\n\n\n\n\n\ngf_boxplot(calories~restaurant,data=fastfood)\n\n\nNote the outliers. We will learn how to remove those much later in the course. The coef defaults to 1.5 but we can change our coef for the outlier whiskers by adding coef =3 as an argument to gf_boxplot(). Try it.\n\n\ngf_boxplot(calories~restaurant,data=fastfood)\n\n\n\n\n\ngf_boxplot(calories~restaurant,data=fastfood,coef = 3)\n\n\nTo see all the things to change type ?gf_boxplot() into a chunk. Try to give a good title, change the color, and improve the axes labels."
+  },
+  {
+    "objectID": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html#assignment",
+    "href": "Tutorials/3rd_Rtutorial_boxplot_sample_stats/3rd_tutorial.html#assignment",
+    "title": "Tutorial 3",
+    "section": "Assignment",
+    "text": "Assignment\n\nPart 1. 5 points\nMake a new .Rmd document. Then choose another numeric variable and generate a new box and whisker plot from the fastfood data frame. You cannot use calories. Then you will:\n\nMake the box and whisker plot a pretty color\nAdd a good title\nknit (or render) it as html\nUpload it to the 3rd rtutorial forum.\n\nTo see which attributes you can change in gf_boxplot() type ?gf_boxplot. To see which colors you can use type colors() into the console (You can see me do this in the video)."
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html",
+    "title": "Tutorial 12",
+    "section": "",
+    "text": "In this tutorial, We’ll format homework problems so that they can be put into R to complete an ANOVA test. We’ll, of course, also do this with a data set. Your assignment is on the last page."
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#anova-from-a-hw-problem",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#anova-from-a-hw-problem",
+    "title": "Tutorial 12",
+    "section": "ANOVA from a HW problem",
+    "text": "ANOVA from a HW problem\nHere’s the text from the HW problem:\nIs a statistics class’ delivery type a factor in how well students do on the final exam? The table below shows the average percent on final exams from several randomly selected classes that used the different delivery types.\n\nThe mosaic and openintro libraries have been preloaded.\nGo to HW 7 part 5 Number 4. My version of the data has been preloaded as HW_7_part_5_number_4.Run the chunk below to see it.\n\n\n\nHW_7_part_5_number_4"
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#pivot-the-table-in-r",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#pivot-the-table-in-r",
+    "title": "Tutorial 12",
+    "section": "Pivot the table in R",
+    "text": "Pivot the table in R\nWe need to reorganize the table so there are two columns. I’ll do this first in R with some code then redo it in excel by copy and pasting. The first column I’ll call meeting_type and will have the levels: Face-to-Face,Hybrid,Online. The second I’ll call final_grades which will have all the values in it.\nWe need a function from a new library(tidyr). It is called pivot_longer() and takes data, cols or column names, the name of the new leveled column with names_to and the name of the new column with values in it called values_to. finally we have to save the new table with the <- operator.\n\n\n#This will make the two columns of the new \"pivoted table\" and save it as problem_4_pivoted\n\nproblem_4_pivoted<- \n  pivot_longer(\n  data = HW_7_part_5_number_4,\n  cols = c(\"Face-to-Face\",\"Hybrid\",\"Online\"), \n  names_to = \"meeting_type\",\n  values_to = \"final_grades\"\n  )\n\n#This displayed the table so we can see it. \nproblem_4_pivoted"
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#or-pivot-the-table-as-a-spreadsheet",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#or-pivot-the-table-as-a-spreadsheet",
+    "title": "Tutorial 12",
+    "section": "Or pivot the table as a spreadsheet",
+    "text": "Or pivot the table as a spreadsheet\nWe need to reorganize the table so there are two columns. I’ll do this first in R with some code then redo it in excel by copy and pasting. The first column I’ll call meeting_type and will have the levels: Face-to-Face,Hybrid,Online. The second I’ll call final_grades which will have all the values in it.\n\nOpen a spread sheet application and paste the data in.\nWe will have to format the data so one column is the levels and one is the values. (see video)\nSave the spreadsheet and upload the sheet to R.\nImport the data by double clicking the spreadsheet and choosing import."
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#run-the-test-in-r",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#run-the-test-in-r",
+    "title": "Tutorial 12",
+    "section": "Run the test in R",
+    "text": "Run the test in R\nWe have to check three things before we can run ANOVA\n\nThe observations are independent within and across groups.\nThe data within each group are nearly normal.\nThe variability across the groups is about equal.\n\nLuckily the problem tells us to assume these work out.\n\nNow we must run the analysis. To execute and save the results type: result_problem_4 <- aov(final_grades~meeting_type,data=problem_4_pivoted)\n\n\n\nproblem_4_pivoted<- \n  pivot_longer(\n  data = HW_7_part_5_number_4,\n  cols = c(\"Face-to-Face\",\"Hybrid\",\"Online\"), \n  names_to = \"meeting_type\",\n  values_to = \"final_grades\"\n  )\n\n\n\n\n\n\n\n\nYou can look at the results by adding result_problem_4 but it doesn’t tell you much. To see the actual results type:\nanova(result_problem_4)\nin the chunk above."
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#anova-from-a-dataset",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#anova-from-a-dataset",
+    "title": "Tutorial 12",
+    "section": "ANOVA from a dataset",
+    "text": "ANOVA from a dataset\n1. Check out the HELPrct dataset. Read about it with?HELPrct\n\n\nHELPrct\n\n\n\nWe’ll examine the cesd and substance variables. Specifically we I’d like to know if there is any difference in the average baseline depression measure based on current substance use.\nLet’s verify:\n\nThe observations are independent within and across groups.\nThe data within each group are nearly normal.\nThe variability across the groups is about equal.\n\nTo check if the data is roughly normal let us check out the box plots with gf_boxplot() and some statistics with favstats(). Input the code in the chunk below.\n\n\n\n\n\n\n\ngf_boxplot(cesd~substance,data=HELPrct)\nfavstats(cesd~substance,data=HELPrct)\n\n\nThere is just one outlier in the Heroin and its not particularly extreme so let’s proceed.\n\nThere are three groups, and we are testing three means of each group the hypothesis notation looks like:\n\n\\(H_0: \\mu_a = \\mu_c =\\mu_h\\)\n\\(H_1: \\mu_a \\ne \\mu_c \\ne \\mu_h\\)\n\\(\\alpha =0.05\\)\n\nIn the chunk below have R do the computation for the test with aov() and save the results, then show the output with anova()\n\n\n\nresults_substance <- aov(  ,data=)\n\n\nanova()\n\n\n\n\n\nresults_substance <- aov(cesd~substance,data=HELPrct)\n\n\nanova(results_substance)"
+  },
+  {
+    "objectID": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#assignment",
+    "href": "Tutorials/12th_Rtutorial_ANOVA/12th_Rtutorial_ANOVA.html#assignment",
+    "title": "Tutorial 12",
+    "section": "Assignment",
+    "text": "Assignment\n5 points\n\nUse the yrbss data set.\nYou are to perform an ANOVA test to test if the average number of days the children are active varies by race.\nBefore your test you should verify that the standard deviations are about the same using favstats(), discuss indepence, and look at a boxplot for normality and outliers\nWrite up the conclusion of your test."
+  },
+  {
+    "objectID": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html",
+    "href": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html",
+    "title": "Tutorial",
+    "section": "",
+    "text": "In this optional tutorial we’ll use the filter() function from the tidyverse library. We will use it to remove outliers from a set of data. There is no assignment for this tutorial, but completing it will allow you to earn 1 point extra credit on the project."
+  },
+  {
+    "objectID": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#setup",
+    "href": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#setup",
+    "title": "Tutorial",
+    "section": "Setup",
+    "text": "Setup\n\nThe mosaic, openintro and tidtverse libraries have been loaded.\nView the nyc_marathon dataset the view(nyc_marathon).\nLet’s take a look at the Men and Women time averages separately. They are “levels” of the division variable. Use gf_boxplot() to plot them and check for outliers.\n\n\n\n\n\n\n\n\ngf_boxplot(time_hrs~division,data=nyc_marathon)\n\n\nYou should see boxplots for men and women winners of nyc_marathon runners. Not the many outliers showing slower runners."
+  },
+  {
+    "objectID": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#finding-the-bounds-for-the-fences",
+    "href": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#finding-the-bounds-for-the-fences",
+    "title": "Tutorial",
+    "section": "Finding the bounds for the fences",
+    "text": "Finding the bounds for the fences\nWe can calculate the upper and lower limit for outliers by hand or go through the steps with R as in the chunk below:\n\n\n#This saves the favstats output\nsaved_stats <- favstats(time_hrs~division,data=nyc_marathon) \n\n#This calculates the IQRs for each group. na.rm removes cells without data.\nsaved_stats_iqr <- iqr(time_hrs~division,data=nyc_marathon,na.rm=TRUE)  \n\n#This is the upper cutoff for outliers\nupper <- saved_stats$Q3 + 1.5*saved_stats_iqr           \n\n#This is the lower cutoff for outliers\nlower <- saved_stats$Q1 - 1.5*saved_stats_iqr           #\n\n#This shows us the upper and lower cutoffs for outliers\nupper \nlower"
+  },
+  {
+    "objectID": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#filter-out-the-outliers",
+    "href": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#filter-out-the-outliers",
+    "title": "Tutorial",
+    "section": "Filter out the outliers",
+    "text": "Filter out the outliers\nOnce we know the upper limits we can remove the outliers with the filter() function. We don’t need to filter by the lower limit because there are not lower outliers. The filter() function takes the data frame we want to filter and the constraints we want to filter by, see code below.\n\n\nnyc_marathon_no_outs <- \n  filter(nyc_marathon, \n         time_hrs < 2.575694 & division =='Women' | \n           time_hrs < 2.258437 & division =='Men'\n         )\n\nnyc_marathon_no_outs"
+  },
+  {
+    "objectID": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#veryfiy-that-outliers-have-been-removed",
+    "href": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#veryfiy-that-outliers-have-been-removed",
+    "title": "Tutorial",
+    "section": "Veryfiy that outliers have been removed",
+    "text": "Veryfiy that outliers have been removed\nThe data is being saved as nyc_marathon_no_outs. Make a new boxplot with this data below to verify that the outlier have been removed.\n\n\nnyc_marathon_no_outs <- \n  filter(nyc_marathon, \n         time_hrs < 2.575694 & division =='Women' | \n           time_hrs < 2.258437 & division =='Men'\n         )\n\n\n\n\n\n\n\n\n\ngf_boxplot(time_hrs~division,data=nyc_marathon_no_outs,coef=1.5)\n\n\nIt looks like there is still an outlier in the Men’s division. But there is not! We removed the outliers from nyc_marathon but we changed the dataset with filter(). When we did this R forgot about the original data nyc_marathon and is calculating outliers in the new nyc_marathon_no_outs data. We have to understand all the outliers from the original dataset have been removed, we should not remove more. To cover up this fake outlier we can change the coef argument to 2."
+  },
+  {
+    "objectID": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#no-assignment-due",
+    "href": "Tutorials/13th_Rtutorial_remove_outliers/13th_Rtutorial_remove_outliers.html#no-assignment-due",
+    "title": "Tutorial",
+    "section": "No Assignment Due",
+    "text": "No Assignment Due"
+  },
+  {
+    "objectID": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html",
+    "href": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html",
+    "title": "Tutorial 4",
+    "section": "",
+    "text": "You will need to put data into R in order to do computations with it. This tutorial will help you do that, in order to complete your homework. Nothing is due for this tutorial, but we’ll save our work in an .Rmd file so I can show some common issues that occur."
+  },
+  {
+    "objectID": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html#upload-a-spreadsheet-file",
+    "href": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html#upload-a-spreadsheet-file",
+    "title": "Tutorial 4",
+    "section": "Upload a spreadsheet file",
+    "text": "Upload a spreadsheet file\nThis method is better for larger sets of data.\n\nFind some data. I’m choosing the data from HW 2 part 1 number 7.\nCopy and paste it into a spreadsheet application.\nMake the data into one column. Add a variable name, instead of spaces use underscores or hyphens.\nName and save the file to your computer. I’ll call it HW2_part1_number_7\nIn the Files pane upload that file to Rstudio (see cheat sheet).\nOpen a new .Rmd file and click on the file HW2_part1_number_7 to import it into R.\nCopy the code that is generated and put it into the setup chunk of a .Rmd (If you are working in the console, you can skip this part. But you’ll need to do this for future projects).\nYou can now do statistics on this data."
+  },
+  {
+    "objectID": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html#make-a-vector",
+    "href": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html#make-a-vector",
+    "title": "Tutorial 4",
+    "section": "Make a vector",
+    "text": "Make a vector\nThis method is better for smaller sets of data.\nIn the video I’ll put this in a separate chunk in my .Rmd file, but if you’d rather you can just work in the console.\n\nFind some data. I’m choosing the data from HW 2 part 1 number 7.\nCome up with a name for your data. I’ll call mine HW2_part_1_problem_7_tedious. Type: HW2_part_1_problem_7_tedious <- c( but don’t hit enter yet. The c() is how R makes vectors, it is short for concatenate. The <- is telling R to save the vector with a specific name.\nCopy your data and paste it into R after the parenthesis.\nNow to clean up the data, we have to add commas directly after each number. Don’t put a comma after the last number and instead put a parenthesis. This is tedious and causes a surprising number of head aches for large data sets.\nNow you can type the code below to answer the question. You don’t have to reference the data, because HW2_part_1_problem_7_tedious is a vector and not a dataframe.\n\nfavstats(~HW2_part_1_problem_7_tedious)\nIQR(~HW2_part_1_problem_7_tedious)"
+  },
+  {
+    "objectID": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html#common-errors",
+    "href": "Tutorials/4th_Rtutorial_importing_data/4th Tutorial.html#common-errors",
+    "title": "Tutorial 4",
+    "section": "Common Errors",
+    "text": "Common Errors\n\nError: data must be an environment or data.frame.\nThis error happens when we save data as a vector then try to use the normal ~variable,data=___ format that is reserved for dataframes.\nfavstats(~HW_2_part1, data= HW_2_part1)\nError: data must be an environment or data.frame.\nSolution: remove the ~ or data=WW2_part_1_problem_7_tedious\n\n\nError: in favstats(…) could not find function “favstats”\nThis happens when we use a function from a library, but forget to load the library.\nSolution: Add the appropriate library to the .Rmd set up chunk. (In this case add library(mosaic)). If you are working the console type library(mosaic) into the console and hit enter.\n\n\nError: in eval(x, data, env) : object ‘sample_data’ not found\nThis has three common causes.\n\nThe variable is misspelled, or has incorrect capitalization.\nYou forgot the data = argument to tell R where the variable is or your data reference is misspelled.\nIf this happens only when you knit the document, it usually means that you did not copy and past the import code into the set up chunk.\n\nSolution for case 3: Import your data again and copy and paste the code that pops up in the console into the setup chunk. I’ll look like the code below with different words in the /.\nlibrary(readxl)\nHW_2_1 <- read_excel(\"~/file/name/document.xlsx\")\n\n\nWarning: Auto-converting formula to numeric.Error in fav_stats(~sample_data, HW_2_1) : ‘language’ object cannot be coerced to type ‘double’\nThis happens when we use the older fav_stats() and not favstats().\nSolution: Never use fav_stats(), only use favstats()."
+  },
+  {
+    "objectID": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html",
+    "href": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html",
+    "title": "Tutorial 6",
+    "section": "",
+    "text": "We want to be able to calculate how likely an event is from a given distribution. In this tutorial we’ll focus on how to calculate probabilities from the binomial, and normal distributions. This tutorial is split into two parts: Part 1 is the Normal distribution and Part 2 is the Binomial Distribution. There is no assignment associated with this tutorial."
+  },
+  {
+    "objectID": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html#part-1-normal-distribution",
+    "href": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html#part-1-normal-distribution",
+    "title": "Tutorial 6",
+    "section": "Part 1: Normal Distribution",
+    "text": "Part 1: Normal Distribution\n\nOpen Rstudio and load the mosaic package. Open the MTH 142 cheat sheet.\nLet’s look at Homework 4 part 1 number 1. I’ll type:\n\nxpnorm(-1.35,mean=0,sd=1)\n\nTo do number 1 part c. We have to do abit more work:\n\n\nWe have to calculate the area lower than the z-score -0.4 with xpnorm(-0.4,mean=0,sd=1)\nWe also have to calculate the area lower than 1.5. xpnorm(1.5,mean=0,sd=1)\nThen we have to subtract those two numbers to find the area in the middle.\n\nType one line of code that will combine all three bullets above.\n\n\n\n\n\n\n\nxpnorm(1.5,mean=0,sd=1) - xpnorm(-0.4,mean=0,sd=1) \n\n\nNote: In the video I also go into number 1 part d.\n\nQuestion 3 part a in the same assignment is asking about quantile (aka a percentile). We have to use xqnorm(0.80,mean=153,sd=7.67)"
+  },
+  {
+    "objectID": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html#part-2-binomial-distribution",
+    "href": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html#part-2-binomial-distribution",
+    "title": "Tutorial 6",
+    "section": "Part 2: Binomial Distribution",
+    "text": "Part 2: Binomial Distribution\n\nOpen Rstudio and load the mosaic package. Open the MTH 142 cheat sheet.\nLet’s look at Homework 4 part 2 number 1. Here is the text from the problem:\n\n\nData collected by the Substance Abuse and Mental Health Services Administration (SAMSHA) suggests that 69.7% of 18-20 year olds consumed alcoholic beverages in 2008.\nTo view the graph of the binomial distribution run the chunk below.\n\n\nplotDist(\"binom\", size = 10, prob= 0.697)\n\n\n\n\nIn part b we are asked to calculate the probability that exactly 6 18-20 year olds drink Alcohol we can do this with the density binomial function dbinom(6, size =10, prob=0.697).\n\n\n\ndbinom(6, size =10, prob=0.697)\n\n\n\n\nTo calculate the probability that up to 6 18-20 year olds drink we would do pbinom(6,size=10,prob=0.697) . This is the same as calculating the probability that 0,1,2,3,4,5 or 6 drink with dbinom().\n\n\n\n# To get the probability of up to 6 people drink use either code below. \n\npbinom(6, size =10, prob=0.697)\n\n\ndbinom(0, size =10, prob=0.697) + \n  dbinom(1, size =10, prob=0.697)+ \n  dbinom(2, size =10, prob=0.697)+ \n  dbinom(3, size =10, prob=0.697) + \n  dbinom(4, size =10, prob=0.697) +\n  dbinom(5, size =10, prob=0.697) + \n  dbinom(6, size =10, prob=0.697)\n\n\n\nYou will have to get creative in answering other questions, if you need help post in the forums."
+  },
+  {
+    "objectID": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html#no-assignment",
+    "href": "Tutorials/6th_Rtutorial_norm_binom_distributions/6th_Rtutorial_norm_binom_distributions.html#no-assignment",
+    "title": "Tutorial 6",
+    "section": "No Assignment",
+    "text": "No Assignment"
+  },
+  {
+    "objectID": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html",
+    "href": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html",
+    "title": "Tutorial 14",
+    "section": "",
+    "text": "In this R Tutorial we’ll walk through the process of making a linear regression model in R"
+  },
+  {
+    "objectID": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html#organize-data",
+    "href": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html#organize-data",
+    "title": "Tutorial 14",
+    "section": "Organize Data",
+    "text": "Organize Data\n\nThe mosaic and openintro libraries have been preloaded.\nI’ll be working from question 1 in homework 8 part 2. Here’s the text from that assignment:\n\nThe data below was collected from manufacturer advertisements of their vehicles horsepower and highway gas mileage (mpg.). Use this data to answer the following questions.\nThe data from my version of the problem is below*, rename the vectors x and y as horsepower and mpg.\n\n\nx <- c(158, 250, 340, 350, 390, 190, 220)\ny <- c(33, 28, 15, 17, 11, 35, 42)\n\n\n\n\n\nhp <- c(158, 250, 340, 350, 390, 190, 220)\nmpg <- c(33, 28, 15, 17, 11, 35, 42)\n\n\n* We could have imported the data as a table but this felt faster. See tutorial 4 for information on that."
+  },
+  {
+    "objectID": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html#make-a-scatter-plot-and-linear-regression",
+    "href": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html#make-a-scatter-plot-and-linear-regression",
+    "title": "Tutorial 14",
+    "section": "Make a scatter plot and linear regression",
+    "text": "Make a scatter plot and linear regression\n\nIn the chunk below make a scatter plot using gf_point() of mpg vs hp.\n\n\n\nhp <- c(158, 250, 340, 350, 390, 190, 220)\nmpg <- c(33, 28, 15, 17, 11, 35, 42)\n\n\n\n\n#Note you don't need a data argument because we're dealing with two vectors, not a data frame. \ngf_point(____~____)\n\n\n\n\n\ngf_point(hp~mpg)\n\n\n\nWe can add a regression line by piping gf_point() to gf_lm() with %>% .\n\n\n\n#Note you don't need a data argument because we're dealing with two vectors, not a data frame. \ngf_point(____~____) %>%\n  gf_lm(____~____)\n\n\n\n\n\ngf_point(hp~mpg) %>%\n  gf_lm(hp~mpg)\n\n\nYou should add better axes labels and a good title. IN case you forget you can add this with the arguments title= \"title\", xlab= \"\",ylab= \"\" to the argument of gf_point()."
+  },
+  {
+    "objectID": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html#find-the-correlation-coefficient-and-equation.",
+    "href": "Tutorials/14th_Rtutorial_linear_regression/14th_Rtutorial_linear_regression.html#find-the-correlation-coefficient-and-equation.",
+    "title": "Tutorial 14",
+    "section": "Find the correlation coefficient and equation.",
+    "text": "Find the correlation coefficient and equation.\n\nWe can use the lm() to find the linear model that fits our data.\n\n\n\nhp_mpg_model <- lm(hp~mpg)\nhp_mpg_model\n\n\n\n\nFrom the output of the model we can see that the equation is\n\n\\(y=-6.896 x + 449.448\\)\nwhere x is mpg and y is hp.\n\nWe can also use msummary(hp_mpg_model) to see the p-value for a hypothesis and the \\(r^2\\) value. To see the correlation coefficient take the square root of r^2 or use cor(). Also note we can see the intercept and mpg values that we used to write the linear equation.\n\n\n\nhp_mpg_model <- lm(hp~mpg)\nhp_mpg_model\n\n\n\n\nmsummary()\nsqrt()\ncor()\n\n\n\n\n\nmsummary(hp_mpg_model)\n\n#When taking the square root of r^2 you have to consider the sign + or - of r.  \nsqrt(0.8171)\n\ncor(hp~mpg)\n\n\nStep 7. Notice when I knitted I needed to bring the data into R I did this by adding the following to the setup chunk.\nlibrary(readxl) Rtut_13 <- read_excel(“Rtut_13.xlsx”)"
+  }
+]

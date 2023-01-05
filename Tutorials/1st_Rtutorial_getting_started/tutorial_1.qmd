@@ -1,14 +1,15 @@
 ---
-title: "R tutorial 0" 
+title: "Tutorial 1"
+subtitle: "Getting Started with RStudio"
 author: "Prof. Nicholas Schwab" 
 format: html
 ---
 
-# Introduction:
+## Introduction
 
 We'll be using Rstudio for statistical computation in this course. We will log onto the Rstudio server which lives on a computer at HCC. You can install R and Rstudio on your personal computer, if you'd like, but that is in another video.
 
-# Log into the server
+## Log into the server
 
 1.  Navigate your browser to: <http://hcc-rstudiosrv1.hcc.edu:8787/auth-sign-in>
 
@@ -22,7 +23,7 @@ username: nschwab\@hcc.edu
 
 password: \*\*\*\*\*\*\*\*
 
-# Tour of Rstudio
+## Tour of Rstudio
 
 To help remember all of the things we need for this class, I've made a cheat sheet. Let's reference it to do the following:
 
@@ -36,32 +37,38 @@ To help remember all of the things we need for this class, I've made a cheat she
 
 -   Downloading file from RStudio.
 
--   Uploading a file to Rstudio/ Copying and pasting plain text.
+-   Uploading a file to Rstudio. 
 
-# Console vs. Rmarkdown
+-   Copying and pasting plain text.
 
--   Scratch work can be done in the Console
+-   Taking a screen shot
+
+## Console vs. Rmarkdown
+
+-   Scratch work can be done in the console
 
 -   Projects knit in markdown[^1]
 
-[^1]: Sometimes students get frustrated and complete the projects in a document with outputs from the console, that's ok you just lose a point.
+[^1]: Sometimes students get frustrated and complete the projects in a document with outputs from the console, that's ok you just lose a point. Totally worth it. 
 
-# Chunk vs white space
+## Grey Chunk vs white space
 
 -   Spacing in chunk
 
 -   Chunk titles
 
--   Extra: R markdown cheat sheet.
+-   Extra: Mosaic cheat sheets.
 
-# Assignment make first knit .Rmd file.
+## Assignment 
 
--   Delete all the default stuff.
+-   Make first knit .Rmd file.
+
+-   Delete all the default stuff below the YAML.
 
 -   Add a chunk to add some numbers together.
 
 -   Write a sentence about what you hope to learn or accomplish in this class.
 
--   Save it as your_name_tut_1.
+-   Save it as your_name_tut_1.Rmd
 
--   Knit your markdown file and post it to the 1st R tutorial forum.
+-   Knit your markdown file as .html and post it to the 1st R tutorial forum.
