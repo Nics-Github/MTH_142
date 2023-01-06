@@ -1,0 +1,67 @@
+---
+title: "12R_tutorial_outline"
+author: "Schwab"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(mosaic)
+```
+
+
+
+
+
+```{r look}
+View(yrbss)
+```
+
+
+Let's verify:
+
+1.  The observations are independent within and across groups.
+2.  The data within each group are nearly normal.
+3.  The variability across the groups is about equal.
+
+To check if the data is roughly normal let us check out the box plots with gf_boxplot() and some statistics with favstats(). Input the code in the chunk below.
+
+```{r help-stats}
+gf_boxplot(cesd~substance,data=yrbss)
+favstats(cesd~substance,data=yrbss)
+```
+
+Change the notation below to match the correct number of means. 
+
+$H_0: \mu_1 = \mu_2 =\mu_3$
+
+$H_1: \mu_1 \ne \mu_2 \ne \mu_3$
+
+$\alpha =0.05$
+
+5.  In the chunk below have R do the computation for the test with `aov()` and save the results, then show the output with `anova()`
+
+```{r anova-yrbss}
+
+results <- aov(  ,data=)
+
+
+anova()
+```
+
+
+
+## Assignment
+
+5 points
+
+-   Use the `yrbss` data set.
+
+-   You are to perform an ANOVA test to test if the average number of days the children are active varies by race.
+
+-   Before your test you should verify that the standard deviations are about the same using favstats(), discuss independence, and look at a boxplot for normality and outliers
+
+-   Write up the conclusion of your test.

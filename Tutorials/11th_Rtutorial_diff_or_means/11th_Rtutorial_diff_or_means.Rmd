@@ -51,7 +51,7 @@ Let's do this process again with a dataset
 
 ```
 
-```{r look-hint, exercise= TRUE}
+```{r look-hint}
 View(nyc_marathon)
 ?nyc_marathon
 ```

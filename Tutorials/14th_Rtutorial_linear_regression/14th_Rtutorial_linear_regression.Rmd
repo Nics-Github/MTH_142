@@ -120,3 +120,13 @@ cor(hp~mpg)
 Step 7. Notice when I knitted I needed to bring the data into R I did this by adding the following to the setup chunk.
 
 library(readxl) Rtut_13 \<- read_excel("Rtut_13.xlsx")
+
+## Assignment 
+
+5 points
+
+Make a linear regression model for `Age` vs `Price` from the `Mustangs` data frame from the `mosaic` package. 
+
+Give the equation, correlation coefficient, a title, and good x and y axes labels. 
+
+Knit your document as an html and post it to the forum. 

@@ -9,7 +9,7 @@ library(learnr)
 knitr::opts_chunk$set(echo = FALSE)
 library(readxl)
 HW_7_part_5_number_4 <-read_excel("~/Documents/MTH_142/Tutorials/12th_Rtutorial_ANOVA/HW_7_part_5_number_4.xlsx")
-library(tidyr)
+library(tidyverse)
 library(mosaic)
 ```
 
@@ -35,7 +35,7 @@ HW_7_part_5_number_4
 
 We need to reorganize the table so there are two columns. I'll do this first in R with some code then redo it in excel by copy and pasting. The first column I'll call `meeting_type` and will have the levels: `Face-to-Face`,`Hybrid`,`Online`. The second I'll call `final_grades` which will have all the values in it.
 
-We need a function from a new `library(tidyr)`. It is called `pivot_longer()` and takes `data`, `cols` or column names, the name of the new leveled column with `names_to` and the name of the new column with values in it called `values_to`. finally we have to save the new table with the `<-` operator.
+We need a function from a new `library(tidyverse)`. It is called `pivot_longer()` and takes `data`, `cols` or column names, the name of the new leveled column with `names_to` and the name of the new column with values in it called `values_to`. finally we have to save the new table with the `<-` operator.
 
 ```{r pivoted-table, exercise=TRUE}
 #This will make the two columns of the new "pivoted table" and save it as problem_4_pivoted
@@ -158,6 +158,6 @@ anova(results_substance)
 
 -   You are to perform an ANOVA test to test if the average number of days the children are active varies by race.
 
--   Before your test you should verify that the standard deviations are about the same using favstats(), discuss indepence, and look at a boxplot for normality and outliers
+-   Before your test you should verify that the standard deviations are about the same using favstats(), discuss independence, and look at a boxplot for normality and outliers
 
 -   Write up the conclusion of your test.

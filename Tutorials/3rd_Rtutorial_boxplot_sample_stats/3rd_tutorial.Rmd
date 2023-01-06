@@ -10,6 +10,8 @@ editor_options:
 ```{r setup, include=FALSE}
 library(learnr)
 library(shiny)
+library(openintro)
+library(mosaic)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 

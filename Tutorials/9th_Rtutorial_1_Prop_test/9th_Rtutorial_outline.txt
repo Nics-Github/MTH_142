@@ -1,0 +1,77 @@
+---
+title: "9th_Rtutorial_Outline"
+author: "student-name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(mosaic)
+library(openintro)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Randomly choose a data point
+
+```{r random-number}
+sample(nrow(arbuthnot),1)
+```
+
+My year  is  
+
+```{r Arbuthnot}
+arbuthnot[ , ]
+```
+
+5.  Calculate the proportion of girls born in London in your year. You can do this with division. Mine would be
+
+    $\frac{}{}=\frac{}{}=0$
+
+
+## Set up 
+
+Check:
+
+-   The success-failure condition (There are at least 10 success and 10 failures)
+
+-   Independence
+
+-   The data comes from a random sample.
+
+## The Test
+
+$H_0: p = 0$
+
+$H_1: p \\ne 0$
+
+
+$ \alpha = 0.05 $
+
+
+
+
+```{r p-value}
+prop_test_results <- prop.test(x=,n=,p=0.5,alternative ="two.sided", correct="False")
+prop_test_results$p.value
+```
+
+
+## Conclusion
+
+
+
+## Assignment
+
+Assignment 5 pts.
+
+You are to conduct a bare bones hypothesis test in R with data from a random year in the table.
+
+-   Choose a random year to use as your proportion.
+
+-   You cannot use the first year (1629).
+
+-   Output your test an html file from an R Markdown file. I have posted a skeleton Rmarkdown for you to use.
+
+-   Post the html output of your Rmarkdown file to the forum. See the video and my output for the format.

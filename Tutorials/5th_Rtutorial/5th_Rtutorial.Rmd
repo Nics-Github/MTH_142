@@ -6,6 +6,8 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(learnr)
+library(openintro)
+library(mosaic)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -19,7 +21,7 @@ In this tutorial you will make a histogram, a boxplot, and run `favstats()` brok
 
 We make a histogram back in 2nd Rtutorial, remember to use gf_histogram() our variable must be numeric. 
 
-1. For this document tutorial we’ll use the `run17` dataframe from openintro. Read about it here. Load the library in the chunk below.
+1. For this document tutorial we’ll use the `run17` dataframe from `openintro`. Read about it here. Load the libraries in the chunk below.
 
 ```{r library, exercise = TRUE}
 
@@ -27,6 +29,7 @@ We make a histogram back in 2nd Rtutorial, remember to use gf_histogram() our va
 
 ```{r library-hint}
 library(openintro)
+library(mosaic)
 ```
 
 2. Let's look at `run17` with the chunk below.

@@ -1,0 +1,64 @@
+---
+title: "11th_Rtutoial_outline"
+author: "Schwab"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(mosaic)
+library(openintro)
+options(scipen = 10)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Check for independence and such see page 267.
+
+
+
+```{r look}
+View(satgpa)
+```
+
+
+```{r boxplot}
+gf_boxplot(~sat_v|sex,data=satgpa)
+```
+
+$H_0: \mu_m = \mu_h$
+
+$H_0: \mu_p < \mu_h$
+
+$\alpha = 0.10$
+
+
+
+```{r nyc-t-test}
+t.test(time_hrs~division,data=, mu=0,alternative="two.sided")
+```
+
+
+
+## Conclusion
+
+
+
+
+## Assignment
+
+5 points
+
+In an Rmarkdown file:
+
+Use the `satgpa` dataset in the `openintro` package. 
+
+Set up a hypothesis test to see if there is a difference between sexes on the numeric variable of your choosing. 
+
+Don't forget to discuss independence and normality. If you do find outliers choose another variable. The formatting is a bit different because the `sex` variable is numeric in this data frame. Use either of the below formats to make your boxplots 
+
+-   `gf_boxplot(~sat_v|sex,data=satgpa)`    
+-   `gf_boxplot(sat_v~sex,group=~sex,data=satgpa)`
+
+There is an outline available if you want to use it. 
