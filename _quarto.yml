@@ -22,12 +22,8 @@ website:
   navbar:
  
     left:
-    - text: Resources
-      href: Resources.qmd
     - icon: book 
-      href: https://mdsr-book.github.io/mdsr2e/
-    - text: T & T
-      href: https://moderndive.com/C-appendixC.html
+      href: https://www.openintro.org/book/os/
     - text: R
       href: http://hcc-rstudiosrv1.hcc.edu:8787/auth-sign-in
     
@@ -36,7 +32,6 @@ website:
       href: https://github.com/Nics-Github/MTH_142
     - text: email
       href: nschwab@hcc.edu
-  
     - text: Syllabus
       href: https://www.google.com
 

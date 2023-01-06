@@ -9,7 +9,7 @@ Here are links to the Rtutorials we'll use in class.
 
 # Outlines
 
-Here are [links](https://www.openintro.org/book/os/) to the text files you can copy as outlines for your tutorial assignments.
+Here are links to the text files you can copy as outlines for your tutorial assignments.
 
 # My Open Math
 

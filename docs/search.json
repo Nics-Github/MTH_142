@@ -1,17 +1,17 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "There are also 14 tutorials relevant to students studying statistics with R. The .Rmd files for those can be found on github.\nI use the mosaic , openintro, and tidyverse packages. Formula ~ syntax is used whenever possible.\nThe text is OpenIntro’s Introduction to Statistics. MyOpenMath is the LMS and has problems from the text. There is a template course on MyOpenMath that was put together by Adam Gilbert of Southern New Hampshire University. If you’d like to copy my template please contact me via the email link above."
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "MTH 142: Intro to Statistics",
     "section": "",
     "text": "Outlines\nHere are links to the text files you can copy as outlines for your tutorial assignments.\n\n\nMy Open Math\nThis link will take you back to My Open Math where you can find our course.\n\n\nThe cheat sheets\nThis link will take you to the course cheat sheets.\n\n\nAll the R you need\nThis link will show a text document of the All the R you need document by Annie McNamara"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "There are also 14 tutorials relevant to students studying statistics with R. The .Rmd files for those can be found on github.\nI use the mosaic , openintro, and tidyverse packages. Formula ~ syntax is used whenever possible.\nThe text is OpenIntro’s Introduction to Statistics. MyOpenMath is the LMS and has problems from the text. There is a template course on MyOpenMath that was put together by Adam Gilbert of Southern New Hampshire University. If you’d like to copy my template please contact me via the email link above."
   },
   {
     "objectID": "Tutorials/8th_Rtutorial_tally-count/8th_Rtutorial.html",
@@ -123,7 +123,7 @@
     "href": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#exploring-the-data",
     "title": "Tutorial 2",
     "section": "Exploring the Data",
-    "text": "Exploring the Data\n\nRead about the data. (Summary on page 12 in the text. More info on openintro.org ).\nLoad the following libraries and prevent scientific notation by copying and pasting the following into the chunk below:\n\nlibrary(openintro)\nlibrary(mosaic)\nlibrary(tidyverse)\noptions(scipen=10)\n\n\n\n\n\n\n\n\nWe want to look at the loan50 data. Below are three ways of doing this. Type and run each:\n\nloan50\nglimpse(loan50)\nhead(loan50)\n\n\n\n\n\n\n\n\nQuestions:\n\n\n\nQuiz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat do we want to learn about lending club borrowers from the tables of data?"
+    "text": "Exploring the Data\n\nRead about the data. (Summary on page 12 in the text. More info on openintro.org ).\nLoad the following libraries and prevent scientific notation by copying and pasting the following into the chunk below:\n\nlibrary(openintro)\nlibrary(mosaic)\noptions(scipen=10)\n\n\n\n\n\n\n\n\nWe want to look at the loan50 data. Below are three ways of doing this. Type and run each:\n\nloan50\nglimpse(loan50)\nhead(loan50)\n\n\n\n\n\n\n\n\nQuestions:\n\n\n\nQuiz\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat do we want to learn about lending club borrowers from the tables of data?"
   },
   {
     "objectID": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#graphing",
@@ -137,7 +137,7 @@
     "href": "Tutorials/2nd_Rtutorial_variable_types_bar_hist/2nd_tutorial.html#assignment",
     "title": "Tutorial 2",
     "section": "Assignment",
-    "text": "Assignment\n\nPart 1. 4 points\nIn a new Rmarkdown file.\n\nChoose one categorical or numeric variable from loan50 and make a bar chart or histogram. You cannot use the state or emp_length variable.\nIf categorical: state whether the variable is (ordinal or nominal). If numeric: state wether it is discrete or continuous and why.3\nOutput the Rmarkdown file as html (be sure to see the 1st R tutorial for this).\nPost these in the the second Rtutorial forum.\n\n\n\nPart 2. 1 point\nFor this part of the assignment you are to post a reply to a classmate’s assignment.\nDo you agree or disagree that the variable is the correct type? Why?"
+    "text": "Assignment\n\nPart 1. 4 points\nIn a new Rmarkdown file.\n\nChoose one categorical or numeric variable from loan50 and make a bar chart or histogram. You cannot use the state or emp_length variable.\nIf categorical: state whether the variable is (ordinal or nominal). If numeric: state whether it is discrete or continuous and why.\nOutput the Rmarkdown file as html (be sure to see the 1st R tutorial for this).\nPost these in the the second Rtutorial forum.\n\n\n\nPart 2. 1 point\nFor this part of the assignment you are to post a reply to a classmate’s assignment.\nDo you agree or disagree that the variable is the correct type? Why?"
   },
   {
     "objectID": "Tutorials/9th_Rtutorial_1_Prop_test/9th_Rtutorial.html",
@@ -502,5 +502,12 @@
     "title": "Tutorial 14",
     "section": "Find the correlation coefficient and equation.",
     "text": "Find the correlation coefficient and equation.\n\nWe can use the lm() to find the linear model that fits our data.\n\n\n\nhp_mpg_model <- lm(hp~mpg)\nhp_mpg_model\n\n\n\n\nFrom the output of the model we can see that the equation is\n\n\\(y=-6.896 x + 449.448\\)\nwhere x is mpg and y is hp.\n\nWe can also use msummary(hp_mpg_model) to see the p-value for a hypothesis and the \\(r^2\\) value. To see the correlation coefficient take the square root of r^2 or use cor(). Also note we can see the intercept and mpg values that we used to write the linear equation.\n\n\n\nhp_mpg_model <- lm(hp~mpg)\nhp_mpg_model\n\n\n\n\nmsummary()\nsqrt()\ncor()\n\n\n\n\n\nmsummary(hp_mpg_model)\n\n#When taking the square root of r^2 you have to consider the sign + or - of r.  \nsqrt(0.8171)\n\ncor(hp~mpg)\n\n\nStep 7. Notice when I knitted I needed to bring the data into R I did this by adding the following to the setup chunk.\nlibrary(readxl) Rtut_13 <- read_excel(“Rtut_13.xlsx”)"
+  },
+  {
+    "objectID": "outlines.html",
+    "href": "outlines.html",
+    "title": "Outlines",
+    "section": "",
+    "text": "Here is the 2nd_Rtutorial"
   }
 ]

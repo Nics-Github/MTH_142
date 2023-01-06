@@ -1,0 +1,49 @@
+---
+title: "Tutorial 2 Assignment Outline"
+author: "student's name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(mosaic)
+library(openintro)
+options(scipen=10)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r look-loan50}
+View(loan50)
+
+```
+
+
+```{r gf-bar-hist }
+gf_bar(~_____,data=)
+gf_hist(~_____,data=)
+```
+
+If your variable is categorical: state whether the variable is (ordinal or nominal). If numeric: state whether it is discrete or continuous and why.
+
+## Assignment
+
+### Part 1. 4 points
+
+In a new Rmarkdown file.
+
+-   Choose one categorical or numeric variable from loan50 and make a bar chart or histogram. You cannot use the `state` or `emp_length` variable.
+
+-   If categorical: state whether the variable is (ordinal or nominal). If numeric: state whether it is discrete or continuous and why.
+
+-   Output the Rmarkdown file as html (be sure to see the 1st R tutorial for this).
+
+-   Post these in the the second Rtutorial forum.
+
+### Part 2. 1 point
+
+For this part of the assignment you are to post a reply to a classmate's assignment.
+
+Do you agree or disagree that the variable is the correct type? Why?
+

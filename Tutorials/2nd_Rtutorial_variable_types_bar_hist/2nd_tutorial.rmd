@@ -6,10 +6,9 @@ runtime: shiny_prerendered
 
 ```{r setup, include=FALSE}
 library(learnr)
-library(tidyverse)
 library(mosaic)
 library(openintro)
-library(shiny)
+options(scipen=10)
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -33,7 +32,6 @@ assignment is on the last page.
     copying and pasting the following into the chunk below: 
     -   library(openintro) 
     -   library(mosaic)
-    -   library(tidyverse) 
     -   options(scipen=10)
 
 ```{r load-libraries, exercise= TRUE}
@@ -129,9 +127,9 @@ See your assignment below
 
 In a new Rmarkdown file.
 
--   Choose one categorical or numeric variable from loan50 and make a bar chart or histogram. You cannot use the state or emp_length variable.
+-   Choose one categorical or numeric variable from loan50 and make a bar chart or histogram. You cannot use the `state` or `emp_length` variable.
 
--   If categorical: state whether the variable is (ordinal or nominal). If numeric: state wether it is discrete or continuous and why.3
+-   If categorical: state whether the variable is (ordinal or nominal). If numeric: state whether it is discrete or continuous and why.
 
 -   Output the Rmarkdown file as html (be sure to see the 1st R tutorial for this).
 
