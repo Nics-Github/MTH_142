@@ -5,9 +5,9 @@ account: 3lhc6o-nicholas-schwab
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7965795
-bundleId: 6690562
+bundleId: 6705375
 url: https://3lhc6o-nicholas-schwab.shinyapps.io/2nd_tutorial/
-when: 1672684791.45731
-lastSyncTime: 1672684791.45732
+when: 1673035183.77417
+lastSyncTime: 1673035183.77418
 asMultiple: FALSE
 asStatic: FALSE

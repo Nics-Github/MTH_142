@@ -7,7 +7,7 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(readxl)
-Problem_1_data <- read_excel("~/Documents/MTH_142/Tutorials/11th_Rtutorial_diff_or_means/Problem-1-data.xlsx")
+Problem_1_data <- read_excel("~/Tutorials/11th_Rtutorial_diff_or_means/Problem-1-data.xlsx")
 library(mosaic)
 library(openintro)
 knitr::opts_chunk$set(echo = FALSE)

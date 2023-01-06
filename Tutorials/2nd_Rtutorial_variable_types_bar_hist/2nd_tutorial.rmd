@@ -8,6 +8,7 @@ runtime: shiny_prerendered
 library(learnr)
 library(mosaic)
 library(openintro)
+library(shiny)
 options(scipen=10)
 knitr::opts_chunk$set(echo = FALSE)
 ```

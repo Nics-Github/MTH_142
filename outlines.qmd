@@ -1,9 +1,0 @@
----
-title: "Outlines"
-author: "Schwab"
-format: html
----
-
-Here are the text outlines to the different tutorials.
-
-Here is the [2nd_Rtutorial](~/Documents/MTH_142/docs/Tutorials/2nd_Rtutorial_variable_types_bar_hist)
